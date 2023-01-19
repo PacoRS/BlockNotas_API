@@ -1,11 +1,19 @@
 package restfull.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="notes")
@@ -20,8 +28,10 @@ public class Note {
 	@Column(name="description",length= 256)
 	private String description;
 	
-	@Column(name="description",length= 256)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
 	private Usuario user;
+	
 	public Note(Long id, String title, String description) {
 		super();
 		this.id = id;

@@ -11,7 +11,7 @@ import restfull.model.Note;
 import restfull.respository.NotesRepository;
 
 @Service
-public class NotesSerivice {
+public class NotesService {
 	
 	@Autowired
 	NotesRepository repository;
